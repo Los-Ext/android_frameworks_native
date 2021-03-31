@@ -32,6 +32,8 @@ cc_defaults {
     host_supported: true,
     cflags: [
         "-DANDROID_UTILS_REF_BASE_DISABLE_IMPLICIT_CONSTRUCTION",
+        "-O3",
+        "-g0",
         "-Wall",
         "-Werror",
         "-Werror=reorder-init-list",
