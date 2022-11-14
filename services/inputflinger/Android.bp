@@ -49,6 +49,10 @@ cc_defaults {
             "bounds",
         ],
     },
+    lto: {
+        thin: true,
+    },
+    whole_program_vtables: true, // Requires ThinLTO
     afdo: true,
     tidy: true,
     tidy_checks: [
