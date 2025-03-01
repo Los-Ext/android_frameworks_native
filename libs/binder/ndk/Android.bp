@@ -69,6 +69,7 @@ cc_library {
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-O3",
     ],
 
     srcs: [
