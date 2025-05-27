@@ -46,7 +46,6 @@ cc_defaults {
         "librenderengine_deps",
         "libtimestats_deps",
         "libsurfaceflinger_common_deps",
-        "disable_postrender_cleanup_defaults",
         "surfaceflinger_defaults",
         "libsurfaceflinger_proto_deps",
     ],
@@ -57,6 +56,13 @@ cc_defaults {
     ] + select(soong_config_variable("qtidisplay", "headers_namespace"), {
         any @ flag_val: ["-DQCOM_UM_FAMILY"],
         default: [],
+    }) + select(soong_config_variable("surfaceflinger", "postrender"), {
+        any @ flag_val: ["-DDISABLE_POSTRENDER_CLEANUP"],
+        default: [],
+    }),
+    whole_static_libs: select(soong_config_variable("surfaceflinger", "postrender"), {
+        any @ flag_val: [flag_val],
+        default: ["disable_postrender_cleanup"],
     }),
     shared_libs: [
         "android.hardware.configstore-utils",
